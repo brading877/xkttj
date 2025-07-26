@@ -5,18 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>星空梯田居 - 贵州从江唐安洞寨梯田民宿</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://font.moekana.com/webfont/css/MKXiuYaTi.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Noto+Sans+SC:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Noto Sans SC', 'Inter', sans-serif; background-color: #fdfaf6; }
-        .dong-blue { color: #1e3a8a; } .dong-red { color: #dc2626; } .sunset-gold { color: #f59e0b; }
-        .terrace-green { color: #16a34a; } .bg-dong-blue { background-color: #1e3a8a; } .bg-dong-dark-blue { background-color: #1a2c58; }
-        .bg-dong-red { background-color: #dc2626; } .border-dong-red { border-color: #dc2626; }
-        .section-title::after { content: ''; display: block; width: 80px; height: 3px; background-color: #f59e0b; margin: 12px auto 0; border-radius: 2px; }
-        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
-        .hero-overlay::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(253, 250, 246, 1), rgba(253, 250, 246, 0)); }
-        /* 新的画廊样式 - CSS Grid */
+    .dong-blue { color: #1e3a8a; } .dong-red { color: #dc2626; } .sunset-gold { color: #f59e0b; }
+    .terrace-green { color: #16a34a; } .bg-dong-blue { background-color: #1e3a8a; } .bg-dong-dark-blue { background-color: #1a2c58; }
+    .bg-dong-red { background-color: #dc2626; } .border-dong-red { border-color: #dc2626; }
+    .section-title::after { content: ''; display: block; width: 80px; height: 3px; background-color: #f59e0b; margin: 12px auto 0; border-radius: 2px; }
+    .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+    .hero-overlay::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(253, 250, 246, 1), rgba(253, 250, 246, 0)); }
+
+    /* --- 新增字体和动画样式 --- */
+    .font-artistic {
+        font-family: 'MaokenXiuYa', 'Noto Sans SC', sans-serif; /* 优先使用秀雅体 */
+    }
+    
+    /* 定义一个淡入+上浮的动画 */
+    @keyframes fadeIn-up {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* 应用动画的类 */
+    .welcome-animation {
+        /* 动画名称、持续时间、延迟、填充模式 */
+        animation: fadeIn-up 1.2s 0.3s backwards;
+    }
+    .title-animation {
+        animation: fadeIn-up 1.2s 0.5s backwards;
+    }
+    .subtitle-animation {
+        animation: fadeIn-up 1.2s 0.7s backwards;
+    }
+    /* --- 新增样式结束 --- */
         .image-grid {
             display: grid;
             /* 在大屏幕上创建4个等宽的列 */
@@ -79,16 +109,31 @@
     </header>
 
     <main class="pt-20">
-        <section class="relative h-[70vh] md:h-[90vh] flex items-center justify-center text-center hero-overlay">
-            <div class="absolute inset-0">
-                <img src="images/hero-background.JPG" alt="星空下的梯田" class="w-full h-full object-cover">
+    <section class="relative h-[70vh] md:h-[90vh] flex items-center justify-center text-center hero-overlay">
+        <div class="absolute inset-0">
+            <img src="images/hero-background.jpg" alt="星空下的梯田" class="w-full h-full object-cover">
+        </div>
+        <div class="relative z-10 text-white px-4">
+            
+            <p class="font-artistic text-2xl md:text-4xl mb-6 welcome-animation" style="text-shadow: 1px 1px 6px rgba(0,0,0,0.5);">
+                星空梯田居，静候远方的你
+            </p>
+            
+            <h1 class="text-4xl md:text-7xl font-bold mb-4 title-animation" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">
+                星空梯田居
+            </h1>
+            
+            <div class="subtitle-animation">
+                <p class="text-lg md:text-2xl font-light" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">
+                    唐安洞寨的隐秘山居之所
+                </p>
+                <p class="mt-2 text-sm md:text-lg sunset-gold font-semibold">
+                    📍 贵州 · 从江 · 唐安洞寨
+                </p>
             </div>
-            <div class="relative z-10 text-white px-4">
-                <h1 class="text-4xl md:text-7xl font-bold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);">星空梯田居</h1>
-                <p class="text-lg md:text-2xl font-light" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.8);">唐安洞寨的隐秘山居之所</p>
-                <p class="mt-2 text-sm md:text-lg sunset-gold font-semibold">📍 贵州 · 从江 · 唐安洞寨</p>
-            </div>
-        </section>
+
+        </div>
+    </section>
 
         <section id="about" class="py-20 px-6 bg-fdfaf6">
             </section>
