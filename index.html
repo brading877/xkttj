@@ -16,27 +16,49 @@
         .section-title::after { content: ''; display: block; width: 80px; height: 3px; background-color: #f59e0b; margin: 12px auto 0; border-radius: 2px; }
         .feature-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
         .hero-overlay::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%; background: linear-gradient(to top, rgba(253, 250, 246, 1), rgba(253, 250, 246, 0)); }
-        /* 瀑布流画廊样式 */
-        .masonry-gallery {
-            column-count: 4; /* 在大屏幕上显示4列 */
-            column-gap: 1rem; /* 设置列之间的间距 */
+        /* 新的画廊样式 - CSS Grid */
+        .image-grid {
+            display: grid;
+            /* 在大屏幕上创建4个等宽的列 */
+            grid-template-columns: repeat(4, 1fr); 
+            /* 定义一个基础的行高，可以根据需要调整 */
+            grid-auto-rows: 200px; 
+            gap: 1rem; /* 设置网格间距 */
         }
-        .masonry-item {
-            display: inline-block;
+
+        .grid-item {
+            /* 默认每个项目占据一个单元格 */
+        }
+        
+        /* 定义一个“高”的样式，让它占据2行 */
+        .grid-item-tall {
+            grid-row: span 2;
+        }
+
+        /* 定义一个“宽”的样式，让它占据2列 */
+        .grid-item-span-2 {
+            grid-column: span 2;
+        }
+        
+        /* 确保图片填满其网格容器 */
+        .image-grid img {
             width: 100%;
-            margin-bottom: 1rem; /* 图片之间的垂直间距 */
-            break-inside: avoid; /* 防止图片被从中间切断 */
+            height: 100%;
+            object-fit: cover; /* 裁剪并填充，保持比例 */
         }
 
         /* 响应式设计：在小屏幕上显示更少的列 */
-        @media (max-width: 1024px) {
-            .masonry-gallery {
-                column-count: 3; /* 中等屏幕3列 */
-            }
-        }
         @media (max-width: 768px) {
-            .masonry-gallery {
-                column-count: 2; /* 小屏幕2列 */
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr); /* 小屏幕2列 */
+                grid-auto-rows: 250px; /* 调整行高以适应 */
+            }
+            /* 在小屏幕上，让所有项目都只占一格，避免布局错乱 */
+            .grid-item-tall {
+                grid-row: span 1;
+            }
+            .grid-item-span-2 {
+                grid-column: span 2; /* 在2列布局中，跨2列意味着占满整行 */
             }
         }
     </style>
@@ -107,33 +129,36 @@
         </section>
         
         <section id="gallery" class="py-20 px-6 bg-gray-100">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-center dong-blue section-title mb-16">📸 美景绝不会让你失望</h2>
-                
-                <div class="masonry-gallery">
-                    <div class="masonry-item">
-                        <img class="h-auto w-full rounded-lg shadow-md" src="images/gallery-4.jpeg" >
-                    </div>
-                    <div class="masonry-item">
-                        <img class="h-auto w-full rounded-lg shadow-md" src="images/gallery-1.jpeg" >
-                    </div>
-                    <div class="masonry-item">
-                        <img class="h-auto w-full rounded-lg shadow-md" src="images/gallery-5.jpeg" >
-                    </div>
-                    <div class="masonry-item">
-                        <img class="h-auto w-full rounded-lg shadow-md" src="images/gallery-6.jpeg" >
-                    </div>
-                    <div class="masonry-item">
-                        <img class="h-auto w-full rounded-lg shadow-md" src="images/gallery-2.jpeg" >
-                    </div>
-                    <div class="masonry-item">
-                        <img class="h-auto w-full rounded-lg shadow-md" src="images/gallery-3.jpeg" >
-                    </div>
+    <div class="container mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center dong-blue section-title mb-16">📸 美景绝不会让你失望</h2>
 
-                    <div class="masonry-item">
-                </div>
+        <div class="image-grid">
+            <div class="grid-item grid-item-tall">
+                <img src="images/gallery-4.jpg" alt="云雾缭绕的清晨" class="w-full h-full object-cover rounded-lg shadow-md">
             </div>
-        </section>
+
+            <div class="grid-item">
+                <img src="images/gallery-1.jpg" alt="房间观景阳台" class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+
+            <div class="grid-item">
+                <img src="images/gallery-5.jpg" alt="侗寨长桌宴" class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+
+            <div class="grid-item">
+                <img src="images/gallery-6.jpg" alt="当地特色早餐" class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+
+            <div class="grid-item">
+                <img src="images/gallery-2.jpg" alt="梯田日落" class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+
+            <div class="grid-item grid-item-span-2">
+                <img src="images/gallery-3.jpg" alt="民宿外观" class="w-full h-full object-cover rounded-lg shadow-md">
+            </div>
+        </div>
+    </div>
+</section>
 
         <section class="py-20 px-6 bg-dong-dark-blue text-white">
             <div class="container mx-auto flex flex-col md:flex-row items-center gap-12">
